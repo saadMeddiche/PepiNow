@@ -29,7 +29,7 @@ class CategorieController extends Controller
 
         //Affect the validated data to the new object
         $Categorie->nom = $data["nom"];
-        
+
         //Insert the new Categorie to the DB
         $Categorie->save();
 
@@ -44,10 +44,10 @@ class CategorieController extends Controller
         $Categorie = Categorie::find($id);
 
         //Return a "Fail Message" if no categorie has been found with that given ID
-        if (!$Categorie) return response()->json(['message' => 'No Categorie Found'] , 404);
-            
+        if (!$Categorie) return response()->json(['message' => 'No Categorie Found'], 404);
+
         //Return The Categorie in json format
-        return response()->json(['Categories' => $Categorie] , 200);
+        return response()->json(['Categories' => $Categorie], 200);
     }
 
     //Update Categorie
@@ -64,7 +64,7 @@ class CategorieController extends Controller
 
         //afect the new data to the choosen object
         $Categorie->nom = $data["nom"];
-       
+
         //Update the data of that Categorie
         $Categorie->update();
 
@@ -79,12 +79,12 @@ class CategorieController extends Controller
         $Categorie = Categorie::find($id);
 
         //Return a "Fail Message" if no Categorie has been found with that given ID
-        if (!$Categorie)  return response()->json(['message' => 'Categorie Not Found'],404);
+        if (!$Categorie)  return response()->json(['message' => 'Categorie Not Found'], 404);
 
         //delete choosed Categorie
         $Categorie->delete();
 
         //Return a success message
-        return response()->json(['message' => 'Categorie Deleted Successfuly'],200);
+        return response()->json(['message' => 'Categorie Deleted Successfuly'], 200);
     }
 }

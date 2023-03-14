@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanteController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\Api\AuthenticationController;
 
@@ -63,4 +64,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     /* Delete A Plante */
     Route::delete('Plante/{id}', [PlanteController::class, 'destroy']);
     /*================================End Plantes================================*/
+
+    /*================================Account================================*/
+    //Update Account
+    Route::put('Account', [AccountController::class, 'update']);
+
+    //Reset Password
+    Route::put('reset', [AccountController::class, 'reset']);
+    /*================================End Account================================*/
+
+    
 });
