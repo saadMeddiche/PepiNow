@@ -42,7 +42,6 @@ class AccountController extends Controller
                 'required',
                 'string',
                 'min:8',
-
             ],
             'repeat_password' => [
                 'required',
