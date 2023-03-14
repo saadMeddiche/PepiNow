@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanteController;
 use App\Http\Controllers\CategorieController;
 
 /*
@@ -34,4 +35,21 @@ Route::put('Categorie/{id}', [CategorieController::class, 'update']);
 
 /* Delete A Categorie */
 Route::delete('Categorie/{id}', [CategorieController::class, 'destroy']);
-    /*================================End Categories================================*/
+/*================================End Categories================================*/
+
+/*================================Plantes================================*/
+/* Show All Plantes */
+Route::get('Plantes', [PlanteController::class, 'index']);
+
+/* Show One Plante */
+Route::get('Plante/{id}', [PlanteController::class, 'show']);
+
+/* Add A Plante */
+Route::post('Plante', [PlanteController::class, 'store']);
+
+/* Update A Plante */
+Route::put('Plante/{id}', [PlanteController::class, 'update']);
+
+/* Delete A Plante */
+Route::delete('Plante/{id}', [PlanteController::class, 'destroy']);
+/*================================End Plantes================================*/
