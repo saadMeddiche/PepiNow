@@ -11,6 +11,9 @@ class CategorieController extends Controller
     //Show All Categories
     public function index()
     {
+        //Policie
+        $this->authorize('viewAny', Categorie::class);
+
         //fetch all Categories
         $Categories = Categorie::all();
 
@@ -21,6 +24,9 @@ class CategorieController extends Controller
     //Add Categorie
     public function store(CategorieFormValidation $request)
     {
+        //Policie
+        $this->authorize('create', Categorie::class);
+
         //store the validated data from the request , and store it in an associative array
         $data = $request->validated();
 
@@ -40,6 +46,9 @@ class CategorieController extends Controller
     //Show Categories
     public function show($id)
     {
+        //Policie
+        $this->authorize('view', Categorie::class);
+
         //Fetch Categorie
         $Categorie = Categorie::find($id);
 
@@ -53,6 +62,9 @@ class CategorieController extends Controller
     //Update Categorie
     public function update(CategorieFormValidation $request, $id)
     {
+        //Policie
+        $this->authorize('update', Categorie::class);
+
         //store the validated data from the request , and store it in an associative array
         $data = $request->validated();
 
@@ -75,6 +87,9 @@ class CategorieController extends Controller
     //Delete Categorie
     public function destroy($id)
     {
+        //Policie
+        $this->authorize('delete', Categorie::class);
+
         //Find the choosen Categorie to delete
         $Categorie = Categorie::find($id);
 
