@@ -14,6 +14,9 @@ class PlanteController extends Controller
    //Show All Plantes
    public function index()
    {
+        //Policie
+        $this->authorize('viewAny', Plante::class);
+
        //fetch all Plantes
        $Plantes = Plante::all();
 
@@ -24,6 +27,9 @@ class PlanteController extends Controller
     //Add Plante
     public function store(PlanteFormValidation $request)
     {
+        //Policie
+        $this->authorize('create', Plante::class);
+
         //store the validated data from the request , and store it in an associative array
         $data = $request->validated();
 
@@ -41,7 +47,7 @@ class PlanteController extends Controller
         $Plante->image = $filename;
 
         $Plante->categorie_id = $data["categorie_id"];
-        
+
         $Plante->user_id= Auth::user()->id;
         
         //Insert the new Plante to the DB
@@ -54,6 +60,9 @@ class PlanteController extends Controller
    //Show Plantes
    public function show($id)
    {
+        //Policie
+        $this->authorize('view', Plante::class);
+
        //Fetch Plante
        $Plante = Plante::find($id);
 
@@ -75,6 +84,9 @@ class PlanteController extends Controller
 
         //Return a "Fail Message" if no Plante has been found with that given ID
         if (!$Plante)  return response()->json(['message' => 'No Plante Found'], 404);
+
+        //Policie
+        $this->authorize('update', $Plante);
 
         //afect the new data to the choosen object
         $Plante->nom = $data["nom"];
@@ -119,6 +131,9 @@ class PlanteController extends Controller
 
         //Return a "Fail Message" if no Plante has been found with that given ID
         if (!$Plante)  return response()->json(['message' => 'Plante Not Found'],404);
+
+        //Policie
+        $this->authorize('delete', $Plante);
 
         //delete choosed Plante
         $Plante->delete();
