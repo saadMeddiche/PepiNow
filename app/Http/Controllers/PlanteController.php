@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Plante;
 use Illuminate\Http\Request;
-use App\Http\Requests\PlanteFormValidation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\PlanteFormValidation;
 
 
 class PlanteController extends Controller
@@ -40,6 +41,8 @@ class PlanteController extends Controller
         $Plante->image = $filename;
 
         $Plante->categorie_id = $data["categorie_id"];
+        
+        $Plante->user_id= Auth::user()->id;
         
         //Insert the new Plante to the DB
         $Plante->save();
