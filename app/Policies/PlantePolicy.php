@@ -18,7 +18,6 @@ class PlantePolicy
     public function view(User $user)
     {
         return true;
-
     }
 
     public function create(User $user)
@@ -35,5 +34,4 @@ class PlantePolicy
     {
         return $user->id == $plante->user_id && $user->hasPermissionTo('Delete-Plante') || $user->hasPermissionTo('*');
     }
-
 }
