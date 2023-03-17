@@ -15,7 +15,7 @@ class RunMeFirst extends Command
      *
      * @var string
      */
-    protected $signature = 'lllf';
+    protected $signature = 'qfqsfqsfqsqf';
 
     /**
      * The console command description.
